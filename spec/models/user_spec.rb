@@ -5,8 +5,8 @@ describe User do
     it { should have_many :tickets }
   
     it "should have valid factories" do
-      pending
-      FactoryGirl.build(:user).should be_valid
+      FactoryGirl.create(:user).should be_valid
+      FactoryGirl.create(:admin).should be_valid
     end
   end
 end

@@ -2,10 +2,14 @@ Feature: Editing a project
   As a user, I want be able to edit a project
   
   Background:
+    Given there are the following users:
+    | email              | password | admin |
+    | admin@ticketee.com | password | true  |
+    And I am signed in as them
     Given there is a project named "project 1"
     And I am on the homepage
     When I follow "project 1"
-    And I follow "Edit project"
+    And I follow "Edit Project"
   
   Scenario: Editing a project
     And I fill "name" in with "project 2"

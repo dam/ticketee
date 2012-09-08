@@ -10,8 +10,12 @@ FactoryGirl.define do
   end
   
   factory :user, :class => User do
-    confirmation_token 'confirm token'
-    confirmed_at 'a datetime'
-    confirmation_sent_at 'a datetime'
+    sequence(:email) { |n| "user#{n}@ticketee.com" }
+    password "password"
+    password_confirmation "password"
+  end
+  
+  factory :admin, :parent => :user do
+    admin true
   end
 end

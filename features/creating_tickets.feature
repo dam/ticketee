@@ -7,8 +7,8 @@ Feature: Creating tickets
     | user@ticketee.com | password | 
     And I am on the homepage
     When I follow "Internet Explorer"
-    Then I should see "New ticket"
-    And I follow "New ticket"
+    Then I should see "New Ticket"
+    And I follow "New Ticket"
     Then I should see "You need to sign in or sign up before continuing."
     When I fill "Email" in with "user@ticketee.com"
     And I fill "Password" in with "password"
