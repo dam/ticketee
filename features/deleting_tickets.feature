@@ -3,8 +3,12 @@ Feature:
   I want have the possibility to delete directly a ticket
   
   Background:
-    Given there is a project named "project 1"
-    And that project has a ticket:
+    Given there are the following users:
+    | email             | password |
+    | user@ticketee.com | password |
+    And I am signed in as them
+    And there is a project named "project 1"
+    And "user@ticketee.com" has created a ticket for this project:
     | title   | description               |
     | title 1 | description for project 1 |
     Given I am on the homepage

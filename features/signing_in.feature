@@ -15,10 +15,5 @@ Feature: Signing in
   Scenario: signing in via form
     Given there are the following users:
     | email             | password | 
-    | user@ticketee.com | password | 
-    And I am on the homepage
-    When I follow "Sign in"
-    And I fill "Email" in with "user@ticketee.com"
-    And I fill "Password" in with "password"
-    And I press "Sign in" button
-    Then I should see "Signed in successfully."
+    | user@ticketee.com | password |
+    And I am signed in as them

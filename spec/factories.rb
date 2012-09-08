@@ -8,4 +8,10 @@ FactoryGirl.define do
     title 'fake title'
     project_id 1
   end
+  
+  factory :user, :class => User do
+    confirmation_token 'confirm token'
+    confirmed_at 'a datetime'
+    confirmation_sent_at 'a datetime'
+  end
 end

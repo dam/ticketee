@@ -1,12 +1,15 @@
 Feature: Viewing tickets
   
   Background:
-    Given there is a project named "project 1"
-    And that project has a ticket:
+    Given there are the following users:
+    | email             | password |
+    | user@ticketee.com | password |
+    And there is a project named "project 1"
+    And "user@ticketee.com" has created a ticket for this project:
     | title   | description               |
     | title 1 | description for project 1 |
     And there is a project named "Internet explorer"
-    And that project has a ticket:
+    And "user@ticketee.com" has created a ticket for this project:
     | title   | description                |
     | title 2 | description for project ie |
     And I am on the homepage
