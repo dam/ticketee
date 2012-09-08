@@ -6,6 +6,7 @@ gem 'rails', '3.2.3'
 
 gem 'sqlite3'
 gem 'jquery-rails'
+gem 'devise', '~> 1.4.3'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -30,7 +31,8 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'launchy' #debugging feature with capybara
-  gem 'database_cleaner' 
+  gem 'database_cleaner'
+  gem 'email_spec'
 end
 
 # To use ActiveModel has_secure_password
