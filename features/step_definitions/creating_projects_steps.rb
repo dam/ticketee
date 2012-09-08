@@ -22,3 +22,37 @@ Then /^I should see "([^"]*)"$/ do |text|
   end
 end
 
+Given /^there is a project named "([^"]*)"$/ do |name|
+  @project = FactoryGirl.create(:project, :name => name)
+end
+
+Then /^I should be on the project page of "([^"]*)"$/ do |project_name|
+  current_path.should include '/projects/' #ensure show action
+  page.should have_content(project_name)
+end
+
+Then /^I should not see "([^"]*)"$/ do |text|
+  if page.respond_to? :should_not
+    page.should_not have_content(text)
+  else
+    assert ! page.has_content?(text)
+  end
+end
+
+Given /^that project has a ticket:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  table.hashes.each do |attributes|
+    @project.tickets.create! attributes
+  end
+end
+
+Then /^I should see "([^"]*)" within "([^"]*)"$/ do |text, selector|
+  within(selector) do
+    if page.respond_to? :should
+      page.should have_content(text)
+    else
+      assert page.has_content?(text)
+    end
+  end
+end
+

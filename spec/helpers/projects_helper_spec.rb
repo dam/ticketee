@@ -1,15 +1,16 @@
 require 'spec_helper'
+include ProjectsHelper
 
-# Specs in this file have access to a helper object that includes
-# the ProjectsHelper. For example:
-#
-# describe ProjectsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       helper.concat_strings("this","that").should == "this that"
-#     end
-#   end
-# end
 describe ProjectsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  describe '#title' do
+    #NOTE: problem with helper configuration, don t have rails helpers env available
+    it "should return a String with pattern arg 1 - ... arg n - Ticketee" do
+      project_name, second_arg = %w(fake_name fake_string)
+      expected_output = "#{project_name} - #{second_arg} - Ticketee"
+      
+      ProjectsHelper.should_receive(:content_for).and_return(expected_output)
+      ProjectsHelper::title(project_name, second_arg).should == expected_output
+    end 
+  end
 end
