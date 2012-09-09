@@ -64,3 +64,8 @@ Given /^"([^"]*)" has created a ticket for this project:$/ do |email, table|
   end
 end
 
+When /^I check "([^"]*)"$/ do |checkbox_name|
+  check checkbox_name
+end
+
+

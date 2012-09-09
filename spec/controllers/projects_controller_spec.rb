@@ -3,18 +3,8 @@ include Devise::TestHelpers
 
 describe ProjectsController do
   
-  let (:user) do
-    user = FactoryGirl.create(:user)
-    user.confirm!
-    user
-  end
-  
-  let (:admin) do
-    user = FactoryGirl.create(:admin)
-    user.confirm!
-    user
-  end
-  
+  let (:user) { create_user! }
+  let (:admin) { create_admin! }
   let (:project) do
     project = FactoryGirl.create(:project)
   end
