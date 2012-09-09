@@ -51,6 +51,13 @@ Ticketee::Application.routes.draw do
     root :to => "base#index"
     resources :users
   end
+  
+  #defining API routes
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+    end
+  end
 
   root :to => 'projects#index'
 

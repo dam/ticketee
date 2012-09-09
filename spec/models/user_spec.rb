@@ -19,4 +19,13 @@ describe User do
       user.to_s.should == "#{user.email} (User)"
     end
   end
+  
+  describe '#ensure_authentication_token' do
+    it 'should generate a new authentication_token on each saved record' do
+      user = User.create!(:email => 'user@ticketee.com',
+                          :password => 'password',
+                          :password_confirmation => 'password' )
+      user.authentication_token.should_not be_nil
+    end
+  end
 end

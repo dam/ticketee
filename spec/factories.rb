@@ -14,6 +14,7 @@ FactoryGirl.define do
     sequence(:email) { |n| "user#{n}@ticketee.com" }
     password "password"
     password_confirmation "password"
+    authentication_token '1234'
   end
   
   factory :admin, :parent => :user do
