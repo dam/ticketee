@@ -33,3 +33,11 @@ Feature: Creating tickets
     Then I should see "Ticket has not been created."
     And I should see "Description is too short"
 
+  Scenario: create a ticket with an attachment
+    When I fill "Title" in with "Add documentation"
+    And I fill "Description" in with "description to add attachment"
+    And I attach the file "spec/fixtures/speed.txt" to "File"
+    And I press "Create Ticket" button
+    Then I should see "Ticket has been created."
+    Then I should see "speed.txt" within "#ticket .asset"
+    
