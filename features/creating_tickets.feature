@@ -4,16 +4,14 @@ Feature: Creating tickets
     Given there is a project named "Internet Explorer"
     And there are the following users:
     | email             | password | 
-    | user@ticketee.com | password | 
+    | user@ticketee.com | password |
+    And "user@ticketee.com" can view the "Internet Explorer" project
+    And I am signed in as them
     And I am on the homepage
     When I follow "Internet Explorer"
     Then I should see "New Ticket"
     And I follow "New Ticket"
-    Then I should see "You need to sign in or sign up before continuing."
-    When I fill "Email" in with "user@ticketee.com"
-    And I fill "Password" in with "password"
-    And I press "Sign in" button
-  
+
   Scenario: Creating a valid ticket
     When I fill "Title" in with "fake title"
     And I fill "Description" in with "fake description"

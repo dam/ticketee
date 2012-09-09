@@ -1,8 +1,17 @@
 Feature: Viewing projects
-  As a user, I want be able to see a list of projects
+  As a user
+  With given permissions
+  I want be able to see a list of projects
+  
+  Background:
+    Given there are the following users:
+    | email             | password |
+    | user@ticketee.com | password |
+    And I am signed in as them
+    And there is a project named "Project 1"
+    And "user@ticketee.com" can view the "Project 1" project
   
   Scenario: Listing all projects
-    Given there is a project named "Project 1"
     And I am on the homepage
     When I follow "Project 1"
     Then I should be on the project page of "Project 1"

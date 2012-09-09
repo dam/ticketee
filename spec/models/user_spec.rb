@@ -10,3 +10,12 @@ describe User do
     end
   end
 end
+
+describe User do
+  describe '#to_s' do
+    it "should pretty print intern informations" do
+      user = FactoryGirl.build(:user)
+      user.to_s.should == "#{user.email} (User)"
+    end
+  end
+end

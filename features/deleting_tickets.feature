@@ -8,6 +8,7 @@ Feature:
     | user@ticketee.com | password |
     And I am signed in as them
     And there is a project named "project 1"
+    And "user@ticketee.com" can view the "project 1" project
     And "user@ticketee.com" has created a ticket for this project:
     | title   | description               |
     | title 1 | description for project 1 |

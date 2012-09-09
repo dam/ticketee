@@ -13,4 +13,29 @@ describe ProjectsHelper do
       ProjectsHelper::title(project_name, second_arg).should == expected_output
     end 
   end
+  
+  describe '#admins_only' do
+   
+    it 'returns nothing if no current user' do
+      ProjectsHelper.stub!(:current_user).and_return(nil)
+      ProjectsHelper::admins_only do
+        'texte to try'
+      end.should be_nil
+    end
+    
+    it 'returns nothing if current user not admin' do
+      ProjectsHelper.stub!(:current_user).and_return(FactoryGirl.build(:user))
+      ProjectsHelper::admins_only do
+        'texte to try'
+      end.should be_nil
+    end
+    
+    it 'returns block given if current user is admin' do
+      text = 'texte to try'
+      ProjectsHelper.stub!(:current_user).and_return(FactoryGirl.create(:admin))
+      ProjectsHelper::admins_only do
+        text
+      end.should eq(text)
+    end
+  end
 end

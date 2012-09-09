@@ -1,12 +1,12 @@
 FactoryGirl.define do 
   factory :project, :class => Project do
-    name "fake_name"
+    sequence(:name) { |n| "fake_name #{n}" }
   end
   
   factory :ticket, :class => Ticket do
-    description 'fake description'
-    title 'fake title'
-    project_id 1
+    sequence(:description) { |n| "fake description #{n}" }
+    sequence(:title) { |n| "fake title #{n}" }
+    project_id '1'
   end
   
   factory :user, :class => User do
@@ -17,5 +17,12 @@ FactoryGirl.define do
   
   factory :admin, :parent => :user do
     admin true
+  end
+  
+  factory :permission, :class => Permission do
+    user_id '1'
+    thing_id '1'
+    thing_type 'type'
+    action 'view'
   end
 end
