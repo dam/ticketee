@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   context "General" do
     it { should have_many :tickets }
+    it { should have_many :permissions }
   
     it "should have valid factories" do
       FactoryGirl.create(:user).should be_valid

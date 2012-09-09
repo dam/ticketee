@@ -5,11 +5,11 @@ describe ProjectsController do
   
   let (:user) { create_user! }
   let (:admin) { create_admin! }
-  let (:project) { project = FactoryGirl.create(:project) }
+  let (:project) { FactoryGirl.create(:project) }
   let (:permission) do
-    permission = Permission.create!(:user => user,
-                                    :thing => project,
-                                    :action => 'view')
+    Permission.create!(:user => user,
+                       :thing => project,
+                       :action => 'view')
   end
 
   context "standard users" do

@@ -7,6 +7,7 @@ FactoryGirl.define do
     sequence(:description) { |n| "fake description #{n}" }
     sequence(:title) { |n| "fake title #{n}" }
     project_id '1'
+    user_id '1'
   end
   
   factory :user, :class => User do
