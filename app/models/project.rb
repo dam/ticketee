@@ -10,4 +10,8 @@ class Project < ActiveRecord::Base
   }
   
   attr_accessible :name
+  
+  def self.for(user)
+    user.admin? ? Project : Project.readable_by(user)
+  end 
 end

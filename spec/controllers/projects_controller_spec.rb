@@ -55,27 +55,22 @@ describe ProjectsController do
           end
         
           it "should render template show" do
-            permission
-            sign_in(:user, user)
             get :show, :id => project.id
             response.should render_template('show')
           end
         end
-      end
-    end
-
-    describe 'actions without admin restriction and permissions' do
-      describe 'GET index' do
-        it "assigns @projects" do
-          project = FactoryGirl.create(:project)
-          get :index
-          response.should be_success
-          assigns(:projects).should eq([project])
-        end
-      
-        it "renders template index" do
-          get :index
-          response.should render_template('index')
+        
+        describe 'GET index' do
+          it "assigns @projects" do
+            get :index
+            response.should be_success
+            assigns(:projects).should eq([project])
+          end
+        
+          it "renders template index" do
+            get :index
+            response.should render_template('index')
+          end
         end
       end
     end

@@ -16,7 +16,7 @@ Feature: Viewing tickets
     | title   | description                |
     | title 2 | description for project ie |
     And I am on the homepage
-  
+
   Scenario: Viewing tickets for a given project
     When I follow "project 1"
     Then I should see "title 1"

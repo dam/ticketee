@@ -11,3 +11,4 @@ Feature: Signing up
     And I fill "Password confirmation" in with "password"
     And I press "Sign up" button
     Then I should see "You have signed up successfully."
+    Then I should see "Please confirm your account before signing in."
