@@ -1,7 +1,7 @@
 class Api::V1::BaseController < ActionController::Base
   before_filter :authenticate_user
   
-  respond_to :json
+  respond_to :json, :xml
   
   private
   
@@ -14,5 +14,13 @@ class Api::V1::BaseController < ActionController::Base
   
   def current_user
     @current_user
+  end 
+  
+  def authorize_admin!
+    unless @current_user.admin?
+      error = {:error => "You must be an admin to do that." }
+      warden.custom_failure!
+      render params[:format].to_sym => error, :status => 401
+    end
   end
 end
