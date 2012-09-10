@@ -12,5 +12,9 @@
     <%= f.label :asset, 'File' %>
     <%= f.file_field :asset %>
   </p>
+  <p>
+    <%= f.label :tags %>
+    <%= f.text_field :tags, params[:tags] %>
+  </p>
   <%= f.submit %>
 <% end %> 

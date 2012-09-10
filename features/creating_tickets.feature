@@ -41,3 +41,13 @@ Feature: Creating tickets
     Then I should see "Ticket has been created."
     Then I should see "speed.txt" within "#ticket .asset"
     
+  Scenario: creating a ticket with tags
+    When I fill "Title" in with "testing tags"
+    And I fill "Description" in with "new feature to add tags on tickets"
+    And I fill "Tags" in with "ruby javascript"
+    And I press "Create Ticket" button
+    Then I should see "Ticket has been created."
+    Then I should see "ruby" within "#ticket #tags"
+    Then I should see "javascript" within "#ticket #tags"
+    
+    

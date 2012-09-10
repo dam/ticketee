@@ -1,10 +1,12 @@
 class TicketsController < ApplicationController
+  before_filter :init
   before_filter :authenticate_user!
   before_filter :find_project
   before_filter :find_ticket, :only => [:show, :edit, :update, :destroy]
   before_filter :authorize_create!, :only => [:new, :create]
   before_filter :authorize_update!, :only => [:edit, :update]
   before_filter :authorize_delete!, :only => [:destroy]
+  before_filter :clean_tags, :only => [:create, :update]
   
   def new
     @ticket = @project.tickets.build
@@ -12,6 +14,7 @@ class TicketsController < ApplicationController
   
   def create
     @ticket = @project.tickets.build(params[:ticket].merge!(:user => current_user))
+    @ticket.tag!(@tags)
     if @ticket.save
       flash[:notice] = "Ticket has been created."
       redirect_to [@project, @ticket]
@@ -38,6 +41,10 @@ class TicketsController < ApplicationController
   end
 
   private
+
+  def init
+    params[:tags] ||= {}
+  end
   
   def find_project
     @project = Project.for(current_user).find(params[:project_id])
@@ -69,5 +76,9 @@ class TicketsController < ApplicationController
       flash[:alert] = "You cannot delete tickets from this project."
       redirect_to @project
     end
+  end
+  
+  def clean_tags
+    @tags = params[:ticket].delete('tags')
   end
 end
